@@ -21,21 +21,21 @@ cars = [
       }
       ]
 
-@auto.route('/cars-list')
+@auto.route('/cars-list',methods = ['GET'])
 def get_cars():
     return jsonify({'cars': cars})
 
-@auto.route('/cars/get/<int:id>')
+@auto.route('/cars/get/<int:id>',methods = ['GET'])
 def get_car(id):
     for car in cars:
         if car['id'] == id:
             return jsonify({'car': car})
         
-@auto.route('/cars/get/<string:name>')        
+@auto.route('/cars/get/<string:name>',methods = ['GET'])        
 def get_car_name(name):
     for car in cars:
         if car['name'] == name:
-            return jsonify({'car': cars})
+            return jsonify({'car': car})
         else:
             return jsonify({'message': 'Car not found'})
         
